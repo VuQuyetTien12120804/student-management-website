@@ -257,7 +257,7 @@ public class studentDAO implements DAOInterface<student>{
 					 " WHERE studentID=?";
 			
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, s.getEmail());
+			st.setString(1, s.getStudentID());
 			
 			// Bước 3: thực thi câu lệnh SQL
 			System.out.println(sql);

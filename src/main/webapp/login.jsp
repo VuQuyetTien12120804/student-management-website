@@ -7,6 +7,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background-image: url("image/meo.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
     <script>
         function my_submit() {
             let error = "";
@@ -29,10 +38,10 @@
         }
     </script>
 </head>
-<body class="container" style="background-color: powderblue">
+<body class="container">
     <div class="row justify-content-center mt-5">
         <div class="col-md-6">
-            <form action="/DebutProject/SignInServlet" method="POST" id="my_form" class="border p-4 bg-light shadow" autocomplete="off" >
+            <form action="/DebutProject/SignInServlet" method="POST" id="my_form" class="border p-4 bg-light shadow" autocomplete="off">
                 <h2 class="text-center mb-4">Welcome to the Student Management Website!</h2>
                 <%
                     String baoLoi = request.getAttribute("error")+"";

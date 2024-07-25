@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="model.student" %>
 <%@ page import="database.studentDAO" %>
@@ -16,9 +15,35 @@
             margin-top: 50px;
         }
     </style>
+    <script>
+        function toggleSelectAll() {
+            var checkboxes = document.querySelectorAll('input[name="selectedStudents"]');
+            var selectAllButton = document.getElementById('selectAllButton');
+            var isSelectAll = selectAllButton.getAttribute('data-select-all') === 'true';
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = isSelectAll;
+            });
+            
+            if (isSelectAll) {
+                selectAllButton.innerText = 'Deselect All';
+                selectAllButton.setAttribute('data-select-all', 'false');
+            } else {
+                selectAllButton.innerText = 'Select All';
+                selectAllButton.setAttribute('data-select-all', 'true');
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
+        <!-- Logout button -->
+        <div class="d-flex justify-content-end mt-3 mb-3">
+            <form method="post" action="LogoutServlet">
+                <button class="btn btn-danger" type="submit">Logout</button>
+            </form>
+        </div>
+
         <!-- Search form -->
         <form class="input-group" method="get" action="SearchStudentServlet">
             <input type="search" name="studentID" id="form1" class="form-control" placeholder="Search by Student ID" aria-label="Search">
@@ -27,15 +52,14 @@
             </button>
         </form>
 
-        <!-- Add and Delete buttons -->
+        <!-- Add, Delete, and Select All buttons -->
         <div class="d-flex justify-content-end mt-3 mb-3">
             <button class="btn btn-success me-2" type="button" id="button-add" data-bs-toggle="modal" data-bs-target="#addStudentModal">Add</button>
             <form id="deleteForm" method="post" action="DeleteStudentServlet">
-                <button class="btn btn-warning" type="submit" id="button-delete">Delete</button>
-            </form>
+                <button class="btn btn-warning me-2" type="submit" id="button-delete">Delete</button>
+                <button class="btn btn-info" type="button" id="selectAllButton" data-select-all="true" onclick="toggleSelectAll()">Select All</button>
         </div>
 
-		
         <!-- Student table -->
         <table class="table table-striped">
             <thead>
@@ -103,7 +127,7 @@
                                 <select class="form-control" id="gender" name="gender" required>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
-                                    <option value="female">Other</option>
+                                    <option value="other">Other</option>
                                 </select>
                             </div>
                             <div class="mb-3">
