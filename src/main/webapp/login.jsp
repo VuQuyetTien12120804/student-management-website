@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <style>
         body {
-            background-image: url("image/meo.jpg");
+            background-image: url("image/cat.jpg");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

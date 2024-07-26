@@ -278,25 +278,24 @@ public class studentDAO implements DAOInterface<student>{
 	}
 	
 	public int deleteStudents(ArrayList<String> studentIds) {
-	        int ketQua = 0;
-	        try {
-	            Connection con = JDBCUtil.getConnection();
-	            String sql = "DELETE FROM student WHERE studentID = ?";
-	            PreparedStatement st = con.prepareStatement(sql);
+	    int result = 0;
+	    try {
+	        Connection con = JDBCUtil.getConnection();
+	        String sql = "DELETE FROM student WHERE studentID = ?";
+	        PreparedStatement st = con.prepareStatement(sql);
 
-	            for (String studentID : studentIds) {
-	                st.setString(1, studentID);
-	                ketQua += st.executeUpdate();
-	            }
-
-	            JDBCUtil.closeConnection(con);
-	        } catch (SQLException e) {
-	            e.printStackTrace();
+	        for (String studentID : studentIds) {
+	            st.setString(1, studentID);
+	            result += st.executeUpdate();
 	        }
-	        return ketQua;
-	    }
 
-	
+	        JDBCUtil.closeConnection(con);
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    return result;
+	}
+
 	@Override
 	public int deleteAll(ArrayList<student> arr) {
 		int dem = 0;
